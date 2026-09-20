@@ -1,3 +1,5 @@
+
+import ReadButton from '@/components/booksDetails/ReadButton';
 import { IBook } from '@/types/books.type';
 import Image from 'next/image';
 
@@ -24,13 +26,13 @@ const BookDetailsPage = async ({params}: IBookDetailsPageProps) => {
     <div className="card lg:card-side bg-base-100 shadow-xl border border-base-200 overflow-hidden">
       
       {/* Book Image */}
-      <figure className="lg:w-2/5 bg-base-200">
+      <figure className="relative h-96 bg-base-200 lg:h-auto lg:min-h-[600px] lg:w-2/5">
         <Image
           src={book.image}
           alt={book.bookName}
-          width={500}
-          height={700}
-          className="w-full h-full object-cover"
+          fill
+          sizes="(max-width: 1024px) 100vw, 40vw"
+          className="object-cover"
         />
       </figure>
 
@@ -129,8 +131,11 @@ const BookDetailsPage = async ({params}: IBookDetailsPageProps) => {
 
         {/* Action */}
         <div className="card-actions justify-end mt-6">
-          <button className="btn btn-primary px-8">
-            Listen
+
+          <ReadButton book={book}/>
+
+            <button className="btn btn-outline px-8">
+                Wishlist
           </button>
         </div>
 
