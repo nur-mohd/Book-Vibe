@@ -1,10 +1,10 @@
-import React from "react";
 import Logo from "@/assets/book.ico";
 import Image from "next/image";
 
 const Navbar = () => {
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <nav className="bg-base-100 shadow-md">
+    <div className="navbar container mx-auto px-4">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -15,20 +15,20 @@ const Navbar = () => {
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-            >
+              >
               {" "}
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M4 6h16M4 12h8m-8 6h16"
-              />{" "}
+                />{" "}
             </svg>
           </div>
           <ul
             tabIndex={-1}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-          >
+            >
             <li>
               <a>Item 1</a>
             </li>
@@ -81,6 +81,7 @@ const Navbar = () => {
         <a className="btn btn-primary">Sign Up</a>   
       </div>
     </div>
+</nav>
   );
 };
 
