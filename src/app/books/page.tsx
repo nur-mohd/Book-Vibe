@@ -1,5 +1,4 @@
-import React from "react";
-import BookCard from "../shared/BookCard";
+import BookCard from "@/components/shared/BookCard";
 import { IBook } from "@/types/books.type";
 
 const getBooks = async () => {
@@ -18,7 +17,7 @@ const Books = async () => {
       {/* Section Heading */}
       <div className="mb-10 text-center">
         <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-indigo-500">
-          Explore Books
+          Explore All Books
         </p>
 
         <h1 className="text-3xl font-bold text-slate-800 md:text-4xl">
@@ -32,9 +31,9 @@ const Books = async () => {
       </div>
 
       {/* Books Grid */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {
-         booksData.slice(0, 6).map((book: IBook, ind:number) => {
+         booksData.map((book: IBook, ind:number) => {
          return <BookCard key={ind} book={book} />;
         })}
       </div>

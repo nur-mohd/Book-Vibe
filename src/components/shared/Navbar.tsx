@@ -1,5 +1,6 @@
 import Logo from "@/assets/book.ico";
 import Image from "next/image";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -56,7 +57,7 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>Item 1</a>
+            <Link href="/books">Books</Link>
           </li>
           <li>
             <details>
