@@ -21,13 +21,12 @@ const BookDetailsPage = async ({params}: IBookDetailsPageProps) => {
     const booksData = await getBooks();
     const book = booksData.find(
         (book:IBook) => String(book.bookId) === String(id)) as IBook;
-    console.log('Book ID:', book);
    return (
-  <div className="container mx-auto my-[70px] px-4">
+  <div className="container mx-auto my-17.5 px-4">
     <div className="card lg:card-side bg-base-100 shadow-xl border border-base-200 overflow-hidden">
       
       {/* Book Image */}
-      <figure className="relative h-96 bg-base-200 lg:h-auto lg:min-h-[600px] lg:w-2/5">
+      <figure className="relative h-96 bg-base-200 lg:h-auto lg:min-h-150 lg:w-2/5">
         <Image
           src={book.image}
           alt={book.bookName}

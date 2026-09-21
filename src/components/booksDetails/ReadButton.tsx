@@ -2,6 +2,7 @@
 import { BooksContext } from "@/context/BooksContext";
 import { IBook } from "@/types/books.type";
 import { useContext } from "react";
+import { toast } from "react-toastify";
 
 
 const ReadButton = ({book}: {book: IBook}) => {
@@ -11,15 +12,19 @@ const ReadButton = ({book}: {book: IBook}) => {
         throw new Error("ReadButton must be used inside BooksProvider");
     }
 
-    const {readBooks, setReadBooks} = useContext(BooksContext);
+    const {readBooks, setReadBooks} = context;
 
     const handleReadBook = () => {
-        console.log("Read button clicked", book);
-         setReadBooks(([...readBooks, book]));
-         alert(`You have marked "${book.bookName}" as read!`);
+        if (readBooks.some((readBook) => readBook.bookId === book.bookId)) {
+            toast.info(`"${book.bookName}" is already marked as read.`);
+            return;
+        }
+
+        setReadBooks((currentBooks) => [...currentBooks, book]);
+        toast.success(`You have marked "${book.bookName}" as read!`);
     };
     return (
-        <button className="btn btn-primary px-8" onClick={() => handleReadBook()}>
+        <button className="btn btn-primary px-8" onClick={handleReadBook}>
             Read Now
           </button>
     );

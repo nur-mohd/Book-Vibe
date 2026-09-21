@@ -10,10 +10,8 @@ const getBooks = async () => {
 const Books = async () => {
   const booksData = await getBooks();
 
-  console.log(booksData);
-
   return (
-    <section className="container mx-auto my-[70px] px-4">
+    <section className="container mx-auto my-17.5 px-4">
       {/* Section Heading */}
       <div className="mb-10 text-center">
         <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-indigo-500">
@@ -33,8 +31,8 @@ const Books = async () => {
       {/* Books Grid */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {
-         booksData.map((book: IBook, ind:number) => {
-         return <BookCard key={ind} book={book} />;
+         booksData.map((book: IBook) => {
+         return <BookCard key={book.bookId} book={book} />;
         })}
       </div>
     </section>

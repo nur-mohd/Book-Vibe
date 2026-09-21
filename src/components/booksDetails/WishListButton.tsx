@@ -2,6 +2,7 @@
 import { BooksContext } from "@/context/BooksContext";
 import { IBook } from "@/types/books.type";
 import { useContext } from "react";
+import { toast } from "react-toastify";
 
 
 
@@ -12,15 +13,19 @@ const WishListButton = ({book}: {book: IBook}) => {
         throw new Error("WishListButton must be used inside BooksProvider");
     }
 
-    const {wishlist, setWishlist} = useContext(BooksContext);
+    const {wishlist, setWishlist} = context;
 
     const handleAddToWishlist = () => {
-        console.log("Wishlist button clicked", book);
-         setWishlist(([...wishlist, book]));
-            alert(`You have added "${book.bookName}" to your wishlist!`);
+        if (wishlist.some((wishlistBook) => wishlistBook.bookId === book.bookId)) {
+            toast.info(`"${book.bookName}" is already in your wishlist.`);
+            return;
+        }
+
+        setWishlist((currentBooks) => [...currentBooks, book]);
+        toast.success(`You have added "${book.bookName}" to your wishlist!`);
     };
     return (
-        <button className="btn btn-primary px-8" onClick={() => handleAddToWishlist()}>
+        <button className="btn btn-primary px-8" onClick={handleAddToWishlist}>
             Add to Wishlist
           </button>
     );
