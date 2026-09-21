@@ -10,11 +10,12 @@ const ListedBooksPage = () => {
         throw new Error('ListedBooksPage must be used inside BooksProvider');
     }
 
-    const {readBooks} = context;
+    const {readBooks, wishlist} = useContext(BooksContext);
     console.log("Read Books from Context:", readBooks);
+    console.log("Wishlist from Context:", wishlist);
     return (
         <div>
-            Listed Books Page
+            Listed Books|Total Read Books: {readBooks.length} <br/> | Total Wishlist Books: {wishlist.length}
         </div>
     );
 };

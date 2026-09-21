@@ -11,7 +11,7 @@ const ReadButton = ({book}: {book: IBook}) => {
         throw new Error("ReadButton must be used inside BooksProvider");
     }
 
-    const {readBooks, setReadBooks} = context;
+    const {readBooks, setReadBooks} = useContext(BooksContext);
 
     const handleReadBook = () => {
         console.log("Read button clicked", book);
